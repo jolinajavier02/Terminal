@@ -1,7 +1,5 @@
 # Jolina Javier - Interactive Portfolio
 
-🌐 **Live Website**: [https://portfolio-roan-eta-47.vercel.app/](https://portfolio-roan-eta-47.vercel.app/)
-
 🎨 A modern, interactive portfolio website for Jolina Javier, showcasing her skills as a UI/UX Designer and Front-End Developer.
 
 ## ✨ Features
@@ -183,10 +181,9 @@ This is a personal portfolio project. If you find bugs or have suggestions for i
 
 For questions about this portfolio or to get in touch with Jolina:
 
-- **Email**: jolina.javier@email.com
-- **LinkedIn**: [Jolina Javier](https://linkedin.com/in/jolina-javier)
-- **GitHub**: [jolina-javier](https://github.com/jolina-javier)
-- **Wantedly**: [Jolina Javier](https://wantedly.com/users/jolina-javier)
+- **Email**: jolinapjavier@gmail.com
+- **LinkedIn**: [Jolina Javier](https://www.linkedin.com/in/jolina-javier-ab92b4326/)
+- **GitHub**: [jolina-javier](https://github.com/jolinajavier02)
 
 ---
 
