@@ -851,7 +851,7 @@ class TerminalPortfolio {
                📥 Download UI/UX Resume
             </a>
         </div>
-    </div>;
+    </div>`;
 
         this.addOutput(resumeText, 'resume-section');
 
