@@ -520,7 +520,7 @@ class TerminalPortfolio {
         <div class="help-command"><span class="command-name">skills</span> - View technical skills and tools</div>
         <div class="help-command"><span class="command-name">projects</span> - Browse portfolio projects</div>
         <div class="help-command"><span class="command-name">education</span> - View educational background</div>
-        <div class="help-command"><span class="command-name">resume</span> - Download resume (UI/UX or Front-End)</div>
+        <div class="help-command"><span class="command-name">resume</span> - Download the resume</div>
         <div class="help-command"><span class="command-name">contact</span> - Get contact information</div>
         <div class="help-command"><span class="command-name">clear</span> - Clear the terminal</div>
         <div class="help-command"><span class="command-name">whoami</span> - Display current user</div>
@@ -533,12 +533,11 @@ class TerminalPortfolio {
         this.addOutput(helpText);
     }
 
-    showAbout() {
+    async showAbout() {
         this.addOutput('About Me', 'help-title');
         this.addOutput('', '');
 
-        setTimeout(() => {
-            const aboutContent = `
+        const aboutContent = `
                 <div class="about-section">
                     <div class="about-intro">
                         <p>Hi! I'm <strong>Jolina Javier</strong>, a passionate <span class="highlight">UI/UX Designer</span> and <span class="highlight">Front-End Developer</span>.</p>
@@ -579,8 +578,7 @@ class TerminalPortfolio {
                         <p>💡 Type <span class="command-highlight">'projects'</span> to see my work, or <span class="command-highlight">'contact'</span> to get in touch!</p>
                     </div>
                 </div>`;
-            this.addOutput(aboutContent, 'about-content');
-        }, 300);
+        await this.typeText(aboutContent, 'about-content', 5);
     }
 
     async showSkills() {
@@ -857,7 +855,7 @@ class TerminalPortfolio {
 
         setTimeout(() => {
             this.addOutput('', '');
-            this.typeText('💡 Choose the resume that best fits the role you\'re considering!', 'info', 40);
+            this.typeText('💡 Click the link above to download the resume.', 'info', 40);
         }, 500);
     }
 
