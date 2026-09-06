@@ -241,17 +241,36 @@ class TerminalPortfolio {
         if (closeBtn) {
             closeBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                // Red: Close the browser tab/window
-                // Show confirmation message before closing
-                const confirmClose = confirm('Close this terminal session?');
-                if (confirmClose) {
-                    window.close();
-                    // If window.close() doesn't work (some browsers block it),
-                    // redirect to a blank page
-                    setTimeout(() => {
-                        window.location.href = 'about:blank';
-                    }, 100);
-                }
+
+                window.open('', '_self');
+                window.close();
+
+                setTimeout(() => {
+                    if (!window.closed && terminalContainer) {
+                        terminalContainer.classList.add('closed');
+                        document.body.classList.add('terminal-closed-page');
+                        document.body.insertAdjacentHTML('beforeend', `
+                            <div class="closed-session-message">
+                                <div class="closed-session-title">Terminal session closed.</div>
+                                <button type="button" class="reopen-terminal-btn">Reopen Terminal</button>
+                            </div>
+                        `);
+
+                        const reopenBtn = document.querySelector('.reopen-terminal-btn');
+                        if (reopenBtn) {
+                            reopenBtn.addEventListener('click', () => {
+                                const closedMessage = document.querySelector('.closed-session-message');
+                                if (closedMessage) {
+                                    closedMessage.remove();
+                                }
+
+                                document.body.classList.remove('terminal-closed-page');
+                                terminalContainer.classList.remove('closed');
+                                this.commandInput.focus();
+                            });
+                        }
+                    }
+                }, 150);
             });
         }
 
