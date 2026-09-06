@@ -17,7 +17,7 @@ class TerminalPortfolio {
             skills: this.showSkills.bind(this),
             projects: this.showProjects.bind(this),
             education: this.showEducation.bind(this),
-            certificates: this.showEducation.bind(this),
+            certificates: this.showCertificates.bind(this),
             resume: this.showResume.bind(this),
             contact: this.showContact.bind(this),
             clear: this.clearTerminal.bind(this),
@@ -776,8 +776,29 @@ class TerminalPortfolio {
         await this.typeText('💡 Click on any link to view the live project or case study', 'info', 30);
     }
 
-    showEducation() {
-        this.addOutput('Education & Certifications:', 'help-title');
+    async showEducation() {
+        this.addOutput('Education Background:', 'help-title');
+        this.addOutput('', '');
+
+        const bachelorDegree = `
+            <div class="education-entry">
+                <div class="education-header">
+                    <span style="font-size: 32px; margin-right: 10px; vertical-align: middle;">🎓</span>
+                    <strong>Bachelor of Science in Hospitality Management — University of Eastern Philippines</strong>
+                    <span class="education-date">2020-2024</span>
+                </div>
+                <div class="education-description">
+                    Built a strong foundation in customer service, communication, business operations, and project management. This background helps me design user-centered digital experiences with empathy, organization, and attention to real user needs.
+                </div>
+            </div>`;
+
+        await this.typeText(bachelorDegree, 'education-section', 8);
+        this.addOutput('', '');
+        await this.typeText('💡 Type certificates to view my UX/UI certificates.', 'info', 30);
+    }
+
+    async showCertificates() {
+        this.addOutput('Certificates:', 'help-title');
         this.addOutput('', '');
 
         const certificates = [
@@ -833,56 +854,48 @@ class TerminalPortfolio {
             }
         ];
 
-        const certificateCards = certificates.map(certificate => `
-            <a class="certificate-card" href="${encodeURI(certificate.file)}" target="_blank" rel="noopener">
+        const certificatesHeader = `
+            <div class="certificates-section">
+                <div class="education-entry">
+                    <div class="education-header">
+                        <img src="https://img.icons8.com/color/48/000000/google-logo.png" width="32" height="32" style="vertical-align: middle; margin-right: 10px;" />
+                        <strong>Coursera & UX/UI Design Certificates</strong>
+                        <span class="education-date">Jul-Oct 2024</span>
+                    </div>
+                    <div class="certificates-grid" id="certificatesGrid-${Date.now()}"></div>
+                </div>
+            </div>`;
+
+        this.addOutput(certificatesHeader, 'education-section');
+        const certificatesGrid = this.output.querySelector('.certificates-grid:last-child');
+
+        for (const certificate of certificates) {
+            await new Promise(resolve => setTimeout(resolve, 220));
+
+            const card = document.createElement('a');
+            card.className = 'certificate-card certificate-card-enter';
+            card.href = encodeURI(certificate.file);
+            card.target = '_blank';
+            card.rel = 'noopener';
+            card.innerHTML = `
                 <div class="certificate-preview">
                     <iframe src="${encodeURI(certificate.file)}#toolbar=0&navpanes=0&scrollbar=0" title="${certificate.title} certificate" loading="lazy"></iframe>
                 </div>
                 <div class="certificate-meta">
                     <span class="certificate-number">${certificate.number}</span>
                     <span class="certificate-title">${certificate.title}</span>
-                </div>
-            </a>
-        `).join('');
-
-        const certificatesSection = `
-            <div class="certificates-section">
-                <div class="education-entry">
-                    <div class="education-header">
-                        <img src="https://img.icons8.com/color/48/000000/google-logo.png" width="32" height="32" style="vertical-align: middle; margin-right: 10px;" />
-                        <strong>Certificates — Coursera & UX/UI Design</strong>
-                        <span class="education-date">Jul-Oct 2024</span>
-                    </div>
-                    <div class="certificates-grid">
-                        ${certificateCards}
-                    </div>
-                </div>
-            </div>`;
-
-        setTimeout(() => {
-            this.addOutput(certificatesSection, 'education-section');
-        }, 300);
-
-        // Bachelor's Degree
-        setTimeout(() => {
-            const bachelorDegree = `
-                <div class="education-entry">
-                    <div class="education-header">
-                        <span style="font-size: 32px; margin-right: 10px; vertical-align: middle;">🎓</span>
-                        <strong>Bachelor of Science in Hospitality Management — University of Eastern Philippines</strong>
-                        <span class="education-date">2020–2024</span>
-                    </div>
-                    <div class="education-description">
-                        Foundation in customer service, project management, and business operations.
-                    </div>
                 </div>`;
-            this.addOutput(bachelorDegree, 'education-section');
-        }, 1200);
 
-        setTimeout(() => {
-            this.addOutput('', '');
-            this.typeText('🌟 Continuously learning and growing in UX/UI design!', 'info', 40);
-        }, 1800);
+            certificatesGrid.appendChild(card);
+            this.scrollToBottom();
+
+            requestAnimationFrame(() => {
+                card.classList.add('is-visible');
+            });
+        }
+
+        this.addOutput('', '');
+        await this.typeText('💡 Click any certificate to open the full PDF.', 'info', 30);
     }
 
     showResume() {
