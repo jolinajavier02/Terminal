@@ -564,9 +564,10 @@ class TerminalPortfolio {
                         <div class="projects-list">
                             <div class="project-brief">• Travel and tour website for planning trips efficiently</div>
                             <div class="project-brief">• Broccobae vegan website for discovering and exploring recipes</div>
-                            <div class="project-brief">• Caldef app for calculating daily calorie intake for diet management</div>
-                            <div class="project-brief">• Globetrone Bank App case study showcasing UX research and prototypes</div>
-                            <div class="project-brief">• Globetrone functioning prototype app demonstrating practical banking solutions</div>
+                            <div class="project-brief">• Focus List productivity tool for organizing daily tasks</div>
+                            <div class="project-brief">• NotesJP note-taking website for saving ideas and study notes</div>
+                            <div class="project-brief">• CalDef website for calorie deficit and diet management guidance</div>
+                            <div class="project-brief">• Terminal portfolio website showcasing my design and front-end work</div>
                         </div>
                     </div>
                     
@@ -676,42 +677,53 @@ class TerminalPortfolio {
             {
                 name: 'CalDef',
                 title: 'CalDef — Calorie Deficit Guidance Website',
-                url: 'https://github.com/jolina/Caldef',
-                description: 'CalDef is a health-focused website aimed at helping users understand calorie deficit, weight management, and sustainable fitness habits. The design presents information in a friendly, educational, and easy-to-digest format, making it perfect for individuals starting their fitness journey or wanting simple guidance on healthy eating.',
+                url: 'https://jolinajavier02.github.io/CalDef/',
+                description: 'CalDef is a health-focused website created to help users understand calorie deficits, daily calorie needs, and sustainable diet planning. The experience presents fitness and nutrition information in a clear, beginner-friendly way, making it easier for users to learn how calorie balance works and apply it to healthier everyday habits.',
                 features: [
-                    'Informative and beginner-friendly calorie deficit explanations',
-                    'Visual layout that highlights important health tips',
-                    'Intuitive design for reading and learning',
-                    'Mobile-responsive pages for on-the-go access',
+                    'Beginner-friendly calorie deficit explanations',
+                    'Guidance for diet management and healthier food choices',
+                    'Clean layout for reading and learning',
+                    'Responsive pages for mobile and desktop users',
                     'Organized content focused on fitness, nutrition, and lifestyle balance'
                 ]
             },
             {
-                name: 'Globetrone Bank App',
-                title: 'Globetrone Bank App — Fintech UI/UX Case Study',
-                url: 'https://jolinajavier02.github.io/Globetrone-Bank-App/',
-                caseStudyUrl: 'https://jolinajavier02.github.io/Globetrone-Case-Study/',
-                description: 'Globetrone is a fintech concept app designed for foreign workers and international users who need to transfer money abroad. The project includes a full UX case study, covering user research, persona creation, user flows, wireframes, and final high-fidelity UI.',
+                name: 'Focus List',
+                title: 'Focus List — Productivity Task Manager',
+                url: 'https://jolinajavier02.github.io/focus-list/',
+                description: 'Focus List is a productivity website designed to help users organize tasks, prioritize work, and stay focused throughout the day. The interface keeps task management simple and distraction-free, giving users a clear space to add, review, and complete their daily priorities.',
                 features: [
-                    'UX case study with complete workflow',
-                    'Money transfer and banking UI',
-                    'User persona: international worker profile',
-                    'Empathy map, journey map, and wireframes',
-                    'High-fidelity prototype',
-                    'Clean, modern interface'
+                    'Simple task creation and organization',
+                    'Focused daily planning experience',
+                    'Clean interface that reduces visual clutter',
+                    'Responsive layout for desktop and mobile use',
+                    'Designed for quick updates and repeated use'
                 ]
             },
             {
-                name: 'Coffee App',
-                title: 'Coffee App — Ordering & Delivery App UI',
-                url: 'https://jolinajavier02.github.io/Coffee-App/',
-                description: 'The Coffee App is a mobile ordering and delivery concept where users can browse coffee menus, customize orders, and check out seamlessly. The design highlights a simple and inviting interface to encourage quick purchasing decisions.',
+                name: 'NotesJP',
+                title: 'NotesJP — Notes & Study Organizer',
+                url: 'https://jolinajavier02.github.io/notesjp/',
+                description: 'NotesJP is a note-taking website built for capturing ideas, study notes, reminders, and useful information in one accessible place. The design focuses on readability, quick writing, and straightforward organization so users can save thoughts without breaking their flow.',
                 features: [
-                    'Product preview screens',
-                    'User flow for ordering',
-                    'Clean and modern UI',
-                    'Menu layout and customization screens',
-                    'Responsive and visually appealing design'
+                    'Quick note writing and review',
+                    'Readable layout for longer notes and study content',
+                    'Simple organization for ideas and reminders',
+                    'Minimal interface focused on content',
+                    'Responsive design for everyday access'
+                ]
+            },
+            {
+                name: 'Portfolio',
+                title: 'Portfolio — Interactive Terminal Website',
+                url: 'https://jolinajavier02.github.io/Terminal/',
+                description: 'This portfolio is an interactive terminal-style website that presents my background, skills, projects, resume, and contact details through command-based navigation. It combines front-end development with a playful portfolio concept, creating a memorable way for visitors to explore my work.',
+                features: [
+                    'Terminal-inspired command interface',
+                    'Interactive project, skills, education, resume, and contact commands',
+                    'Animated loading and typing effects',
+                    'Responsive layout for different screen sizes',
+                    'Custom styling that reflects a developer portfolio experience'
                 ]
             }
         ];
@@ -962,7 +974,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'sudo': () => 'Nice try! But you don\'t have sudo privileges here. 😄',
         'rm -rf /': () => 'Whoa there! Let\'s not delete everything. 😅',
         'hack': () => 'I\'m already in! Just kidding... 🕵️‍♀️',
-        'coffee': () => '☕ Here\'s your virtual coffee! Fuel for coding!',
         'matrix': () => 'There is no spoon... 🥄',
         'konami': () => '⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️ - You found the Konami code!'
     };
