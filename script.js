@@ -780,7 +780,8 @@ class TerminalPortfolio {
         this.addOutput('Education Background:', 'help-title');
         this.addOutput('', '');
 
-        const bachelorDegree = `
+        const educationEntries = [
+            `
             <div class="education-entry">
                 <div class="education-header">
                     <span style="font-size: 32px; margin-right: 10px; vertical-align: middle;">🎓</span>
@@ -790,10 +791,37 @@ class TerminalPortfolio {
                 <div class="education-description">
                     Built a strong foundation in customer service, communication, business operations, and project management. This background helps me design user-centered digital experiences with empathy, organization, and attention to real user needs.
                 </div>
-            </div>`;
+            </div>`,
+            `
+            <div class="education-entry">
+                <div class="education-header">
+                    <img src="https://img.icons8.com/color/48/000000/google-logo.png" width="32" height="32" style="vertical-align: middle; margin-right: 10px;" />
+                    <strong>Google UX Design Certificate — Coursera</strong>
+                    <span class="education-date">July 2025-October 2025</span>
+                </div>
+                <div class="education-description">
+                    Completed a professional UX design program focused on the full design process, including empathizing with users, defining problems, ideating solutions, building wireframes, creating prototypes, conducting usability research, and preparing high-fidelity designs.
+                </div>
+            </div>`,
+            `
+            <div class="education-entry">
+                <div class="education-header">
+                    <img src="https://img.icons8.com/fluency/48/000000/adobe-xd.png" width="32" height="32" style="vertical-align: middle; margin-right: 10px;" />
+                    <strong>UI/UX Design Specialization — California Institute of the Arts / Coursera</strong>
+                    <span class="education-date">July 2025-October 2025</span>
+                </div>
+                <div class="education-description">
+                    Studied core UI/UX design principles through CalArts coursework, with emphasis on visual interface design, layout, hierarchy, user-centered thinking, and translating design concepts into clear digital experiences.
+                </div>
+            </div>`
+        ];
 
-        await this.typeText(bachelorDegree, 'education-section', 8);
-        this.addOutput('', '');
+        for (const entry of educationEntries) {
+            await this.typeText(entry, 'education-section', 8);
+            this.addOutput('', '');
+            await new Promise(resolve => setTimeout(resolve, 250));
+        }
+
         await this.typeText('💡 Type certificates to view my UX/UI certificates.', 'info', 30);
     }
 
