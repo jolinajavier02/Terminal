@@ -17,6 +17,7 @@ class TerminalPortfolio {
             skills: this.showSkills.bind(this),
             projects: this.showProjects.bind(this),
             education: this.showEducation.bind(this),
+            certificates: this.showEducation.bind(this),
             resume: this.showResume.bind(this),
             contact: this.showContact.bind(this),
             clear: this.clearTerminal.bind(this),
@@ -520,6 +521,7 @@ class TerminalPortfolio {
         <div class="help-command"><span class="command-name">skills</span> - View technical skills and tools</div>
         <div class="help-command"><span class="command-name">projects</span> - Browse portfolio projects</div>
         <div class="help-command"><span class="command-name">education</span> - View educational background</div>
+        <div class="help-command"><span class="command-name">certificates</span> - View certificates and course credentials</div>
         <div class="help-command"><span class="command-name">resume</span> - Download the resume</div>
         <div class="help-command"><span class="command-name">contact</span> - Get contact information</div>
         <div class="help-command"><span class="command-name">clear</span> - Clear the terminal</div>
@@ -778,44 +780,88 @@ class TerminalPortfolio {
         this.addOutput('Education & Certifications:', 'help-title');
         this.addOutput('', '');
 
-        // Google UX Design Certificate
-        setTimeout(() => {
-            const googleCert = `
+        const certificates = [
+            {
+                number: '1',
+                title: 'Google UX Design',
+                file: '1.Google UX Design.pdf'
+            },
+            {
+                number: '2',
+                title: 'Foundations of User Experience (UX) Design',
+                file: '2.Foundations of User Experience (UX) Design.pdf'
+            },
+            {
+                number: '3',
+                title: 'Conduct UX Research and Test Early Concepts',
+                file: '3.Conduct UX Research and Test Early Concepts.pdf'
+            },
+            {
+                number: '4',
+                title: 'Start the UX Design Process',
+                file: '4.Start the UX Design Process.pdf'
+            },
+            {
+                number: '5',
+                title: 'Build Wireframes and Low-Fidelity Prototypes',
+                file: '5.Build Wireframes and Low-Fidelity Prototypes.pdf'
+            },
+            {
+                number: '6',
+                title: 'Create High-Fidelity Designs',
+                file: '6.Create High-Fidelity Designs.pdf'
+            },
+            {
+                number: '7',
+                title: 'Build Dynamic User Interfaces (UI) for Websites',
+                file: '7.Build Dynamic User Interfaces (UI) for Websites.pdf'
+            },
+            {
+                number: '8',
+                title: 'Design a User Experience for Social Good',
+                file: '8.Design a User Experience for Social Good.pdf'
+            },
+            {
+                number: '9',
+                title: 'UX Design Fundamentals',
+                file: '9.UX Design Fundamentals.pdf'
+            },
+            {
+                number: '10',
+                title: 'Visual Elements of User Interface Design',
+                file: '10.Visual Elements of User Interface Design.pdf'
+            }
+        ];
+
+        const certificateCards = certificates.map(certificate => `
+            <a class="certificate-card" href="${encodeURI(certificate.file)}" target="_blank" rel="noopener">
+                <div class="certificate-preview">
+                    <iframe src="${encodeURI(certificate.file)}#toolbar=0&navpanes=0&scrollbar=0" title="${certificate.title} certificate" loading="lazy"></iframe>
+                </div>
+                <div class="certificate-meta">
+                    <span class="certificate-number">${certificate.number}</span>
+                    <span class="certificate-title">${certificate.title}</span>
+                </div>
+            </a>
+        `).join('');
+
+        const certificatesSection = `
+            <div class="certificates-section">
                 <div class="education-entry">
                     <div class="education-header">
                         <img src="https://img.icons8.com/color/48/000000/google-logo.png" width="32" height="32" style="vertical-align: middle; margin-right: 10px;" />
-                        <strong>Google UX Design Certificate — Coursera</strong>
-                        <span class="education-date">Jul–Oct 2024</span>
+                        <strong>Certificates — Coursera & UX/UI Design</strong>
+                        <span class="education-date">Jul-Oct 2024</span>
                     </div>
-                    <div class="education-courses">
-                        <div class="course-item">✅ 1. Foundations of User Experience (UX) Design</div>
-                        <div class="course-item">✅ 2. Start the UX Design Process: Empathize, Define, and Ideate</div>
-                        <div class="course-item">✅ 3. Build Wireframes and Low-Fidelity Prototypes</div>
-                        <div class="course-item">✅ 4. Conduct UX Research and Test Early Concepts</div>
-                        <div class="course-item">✅ 5. Create High-Fidelity Designs and Prototypes in Figma</div>
-                        <div class="course-item">✅ 6. Responsive Web Design in Adobe XD and Figma</div>
-                        <div class="course-item">✅ 7. Design a User Experience for Social Good & Prepare for Jobs</div>
+                    <div class="certificates-grid">
+                        ${certificateCards}
                     </div>
-                </div>`;
-            this.addOutput(googleCert, 'education-section');
-        }, 300);
+                </div>
+            </div>`;
 
-        // UI/UX Design Specialization
         setTimeout(() => {
-            const calartsCert = `
-                <div class="education-entry">
-                    <div class="education-header">
-                        <img src="https://img.icons8.com/fluency/48/000000/adobe-xd.png" width="32" height="32" style="vertical-align: middle; margin-right: 10px;" />
-                        <strong>UI/UX Design Specialization — California Institute of the Arts / Coursera</strong>
-                        <span class="education-date">Jul–Oct 2024</span>
-                    </div>
-                    <div class="education-courses">
-                        <div class="course-item">✅ 1. Visual Elements of User Interface Design</div>
-                        <div class="course-item">✅ 2. UX Design Fundamentals</div>
-                    </div>
-                </div>`;
-            this.addOutput(calartsCert, 'education-section');
-        }, 1200);
+            this.addOutput(certificatesSection, 'education-section');
+        }, 300);
 
         // Bachelor's Degree
         setTimeout(() => {
@@ -831,12 +877,12 @@ class TerminalPortfolio {
                     </div>
                 </div>`;
             this.addOutput(bachelorDegree, 'education-section');
-        }, 2100);
+        }, 1200);
 
         setTimeout(() => {
             this.addOutput('', '');
             this.typeText('🌟 Continuously learning and growing in UX/UI design!', 'info', 40);
-        }, 2800);
+        }, 1800);
     }
 
     showResume() {
