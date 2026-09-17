@@ -585,6 +585,9 @@ class TerminalPortfolio {
                         <div class="projects-list">
                             <div class="project-brief">• Travel and tour website for planning trips efficiently</div>
                             <div class="project-brief">• Broccobae vegan website for discovering and exploring recipes</div>
+                            <div class="project-brief">• Coffee App ordering and delivery concept for browsing and customizing drinks</div>
+                            <div class="project-brief">• Globetrone Bank App prototype for mobile banking and money transfers</div>
+                            <div class="project-brief">• Globetrone case study showcasing UX research, wireframes, and prototypes</div>
                             <div class="project-brief">• Focus List productivity tool for organizing daily tasks</div>
                             <div class="project-brief">• NotesJP note-taking website for saving ideas and study notes</div>
                             <div class="project-brief">• CalDef website for calorie deficit and diet management guidance</div>
@@ -693,6 +696,45 @@ class TerminalPortfolio {
                     'Step-by-step instructions ideal for beginners',
                     'Focus on plant-based, healthy, and accessible ingredients',
                     'Responsive layout for mobile and desktop users'
+                ]
+            },
+            {
+                name: 'Coffee App',
+                title: 'Coffee App — Ordering & Delivery App UI',
+                url: 'https://jolinajavier02.github.io/Coffee-App/',
+                description: 'The Coffee App is a mobile ordering and delivery concept where users can browse coffee menus, customize orders, and check out seamlessly. The design highlights a simple and inviting interface to encourage quick purchasing decisions.',
+                features: [
+                    'Product preview screens',
+                    'User flow for ordering',
+                    'Clean and modern UI',
+                    'Menu layout and customization screens',
+                    'Responsive and visually appealing design'
+                ]
+            },
+            {
+                name: 'Globetrone Bank App',
+                title: 'Globetrone Bank App — Mobile Banking Prototype',
+                url: 'https://jolinajavier02.github.io/Globetrone-Bank-App/',
+                description: 'Globetrone Bank App is a fintech concept designed for foreign workers and international users who need a practical way to manage banking tasks and transfer money abroad. The prototype focuses on clear navigation, trusted financial interactions, and simple mobile banking flows.',
+                features: [
+                    'Money transfer and banking UI',
+                    'Clean mobile app interface',
+                    'Practical account and transaction screens',
+                    'High-fidelity prototype experience',
+                    'Designed for international users and remittance needs'
+                ]
+            },
+            {
+                name: 'Globetrone Case Study',
+                title: 'Globetrone Case Study — Fintech UX Research',
+                url: 'https://jolinajavier02.github.io/Globetrone-Case-Study/',
+                description: 'The Globetrone case study documents the UX process behind the fintech app, from understanding user needs to shaping the final high-fidelity design. It covers research, persona creation, journey mapping, wireframes, and the design decisions that support safer and clearer money transfers.',
+                features: [
+                    'UX case study with complete workflow',
+                    'User persona: international worker profile',
+                    'Empathy map and journey map',
+                    'Wireframes and high-fidelity screens',
+                    'Research-driven design decisions'
                 ]
             },
             {
