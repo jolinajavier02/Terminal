@@ -672,6 +672,32 @@ class TerminalPortfolio {
     async showProjects() {
         const projects = [
             {
+                name: 'Portfolio',
+                title: 'Portfolio — Personal Portfolio Website',
+                url: 'https://jolinajavier02.github.io/Portfolio/',
+                description: 'Portfolio is my personal website for presenting my design background, front-end skills, selected projects, resume, and contact information in a clear and professional format.',
+                features: [
+                    'Personal portfolio layout',
+                    'Project showcase section',
+                    'Skills, resume, and contact information',
+                    'Responsive design for mobile and desktop visitors',
+                    'Clean presentation for design and development work'
+                ]
+            },
+            {
+                name: 'Terminal Website',
+                title: 'Terminal Website — Interactive Command-Based Project',
+                url: 'https://jolinajavier02.github.io/Terminal/',
+                description: 'This Terminal Website is the interactive command-based project you are viewing now. It presents my background, skills, projects, resume, and contact details through terminal-style navigation, combining front-end development with a playful and memorable browsing experience.',
+                features: [
+                    'Terminal-inspired command interface',
+                    'Interactive project, skills, education, resume, and contact commands',
+                    'Animated loading and typing effects',
+                    'Responsive layout for different screen sizes',
+                    'Custom styling that makes this website feel like a real terminal project'
+                ]
+            },
+            {
                 name: 'Natours Travel',
                 title: 'Natours Travel — Travel & Tours Website',
                 url: 'https://natours-travel.com/',
@@ -699,42 +725,16 @@ class TerminalPortfolio {
                 ]
             },
             {
-                name: 'Coffee App',
-                title: 'Coffee App — Ordering & Delivery App UI',
-                url: 'https://jolinajavier02.github.io/Coffee-App/',
-                description: 'The Coffee App is a mobile ordering and delivery concept where users can browse coffee menus, customize orders, and check out seamlessly. The design highlights a simple and inviting interface to encourage quick purchasing decisions.',
+                name: 'NotesJP',
+                title: 'NotesJP — Notes & Study Organizer',
+                url: 'https://jolinajavier02.github.io/notesjp/',
+                description: 'NotesJP is a note-taking website built for capturing ideas, study notes, reminders, and useful information in one accessible place. The design focuses on readability, quick writing, and straightforward organization so users can save thoughts without breaking their flow.',
                 features: [
-                    'Product preview screens',
-                    'User flow for ordering',
-                    'Clean and modern UI',
-                    'Menu layout and customization screens',
-                    'Responsive and visually appealing design'
-                ]
-            },
-            {
-                name: 'Globetrone Bank App',
-                title: 'Globetrone Bank App — Mobile Banking Prototype',
-                url: 'https://jolinajavier02.github.io/Globetrone-Bank-App/',
-                description: 'Globetrone Bank App is a fintech concept designed for foreign workers and international users who need a practical way to manage banking tasks and transfer money abroad. The prototype focuses on clear navigation, trusted financial interactions, and simple mobile banking flows.',
-                features: [
-                    'Money transfer and banking UI',
-                    'Clean mobile app interface',
-                    'Practical account and transaction screens',
-                    'High-fidelity prototype experience',
-                    'Designed for international users and remittance needs'
-                ]
-            },
-            {
-                name: 'Globetrone Case Study',
-                title: 'Globetrone Case Study — Fintech UX Research',
-                url: 'https://jolinajavier02.github.io/Globetrone-Case-Study/',
-                description: 'The Globetrone case study documents the UX process behind the fintech app, from understanding user needs to shaping the final high-fidelity design. It covers research, persona creation, journey mapping, wireframes, and the design decisions that support safer and clearer money transfers.',
-                features: [
-                    'UX case study with complete workflow',
-                    'User persona: international worker profile',
-                    'Empathy map and journey map',
-                    'Wireframes and high-fidelity screens',
-                    'Research-driven design decisions'
+                    'Quick note writing and review',
+                    'Readable layout for longer notes and study content',
+                    'Simple organization for ideas and reminders',
+                    'Minimal interface focused on content',
+                    'Responsive design for everyday access'
                 ]
             },
             {
@@ -764,29 +764,42 @@ class TerminalPortfolio {
                 ]
             },
             {
-                name: 'NotesJP',
-                title: 'NotesJP — Notes & Study Organizer',
-                url: 'https://jolinajavier02.github.io/notesjp/',
-                description: 'NotesJP is a note-taking website built for capturing ideas, study notes, reminders, and useful information in one accessible place. The design focuses on readability, quick writing, and straightforward organization so users can save thoughts without breaking their flow.',
+                name: 'Globetrone Case Study',
+                title: 'Globetrone Case Study — Fintech UX Research',
+                url: 'https://jolinajavier02.github.io/Globetrone-Case-Study/',
+                description: 'The Globetrone case study documents the UX process behind the fintech app, from understanding user needs to shaping the final high-fidelity design. It covers research, persona creation, journey mapping, wireframes, and the design decisions that support safer and clearer money transfers.',
                 features: [
-                    'Quick note writing and review',
-                    'Readable layout for longer notes and study content',
-                    'Simple organization for ideas and reminders',
-                    'Minimal interface focused on content',
-                    'Responsive design for everyday access'
+                    'UX case study with complete workflow',
+                    'User persona: international worker profile',
+                    'Empathy map and journey map',
+                    'Wireframes and high-fidelity screens',
+                    'Research-driven design decisions'
                 ]
             },
             {
-                name: 'Terminal Website',
-                title: 'Terminal Website — Interactive Command-Based Project',
-                url: 'https://jolinajavier02.github.io/Terminal/',
-                description: 'This Terminal Website is the interactive command-based project you are viewing now. It presents my background, skills, projects, resume, and contact details through terminal-style navigation, combining front-end development with a playful and memorable browsing experience.',
+                name: 'Globetrone Bank App',
+                title: 'Globetrone Bank App — Mobile Banking Prototype',
+                url: 'https://jolinajavier02.github.io/Globetrone-Bank-App/',
+                description: 'Globetrone Bank App is a fintech concept designed for foreign workers and international users who need a practical way to manage banking tasks and transfer money abroad. The prototype focuses on clear navigation, trusted financial interactions, and simple mobile banking flows.',
                 features: [
-                    'Terminal-inspired command interface',
-                    'Interactive project, skills, education, resume, and contact commands',
-                    'Animated loading and typing effects',
-                    'Responsive layout for different screen sizes',
-                    'Custom styling that makes this website feel like a real terminal project'
+                    'Money transfer and banking UI',
+                    'Clean mobile app interface',
+                    'Practical account and transaction screens',
+                    'High-fidelity prototype experience',
+                    'Designed for international users and remittance needs'
+                ]
+            },
+            {
+                name: 'Coffee App',
+                title: 'Coffee App — Ordering & Delivery App UI',
+                url: 'https://jolinajavier02.github.io/Coffee-App/',
+                description: 'The Coffee App is a mobile ordering and delivery concept where users can browse coffee menus, customize orders, and check out seamlessly. The design highlights a simple and inviting interface to encourage quick purchasing decisions.',
+                features: [
+                    'Product preview screens',
+                    'User flow for ordering',
+                    'Clean and modern UI',
+                    'Menu layout and customization screens',
+                    'Responsive and visually appealing design'
                 ]
             }
         ];
