@@ -591,7 +591,7 @@ class TerminalPortfolio {
                             <div class="project-brief">• Focus List productivity tool for organizing daily tasks</div>
                             <div class="project-brief">• NotesJP note-taking website for saving ideas and study notes</div>
                             <div class="project-brief">• CalDef website for calorie deficit and diet management guidance</div>
-                            <div class="project-brief">• Terminal portfolio website showcasing my design and front-end work</div>
+                            <div class="project-brief">• Terminal Website project showcasing this interactive command-based experience</div>
                         </div>
                     </div>
                     
@@ -777,16 +777,16 @@ class TerminalPortfolio {
                 ]
             },
             {
-                name: 'Portfolio',
-                title: 'Portfolio — Interactive Terminal Website',
+                name: 'Terminal Website',
+                title: 'Terminal Website — Interactive Command-Based Project',
                 url: 'https://jolinajavier02.github.io/Terminal/',
-                description: 'This portfolio is an interactive terminal-style website that presents my background, skills, projects, resume, and contact details through command-based navigation. It combines front-end development with a playful portfolio concept, creating a memorable way for visitors to explore my work.',
+                description: 'This Terminal Website is the interactive command-based project you are viewing now. It presents my background, skills, projects, resume, and contact details through terminal-style navigation, combining front-end development with a playful and memorable browsing experience.',
                 features: [
                     'Terminal-inspired command interface',
                     'Interactive project, skills, education, resume, and contact commands',
                     'Animated loading and typing effects',
                     'Responsive layout for different screen sizes',
-                    'Custom styling that reflects a developer portfolio experience'
+                    'Custom styling that makes this website feel like a real terminal project'
                 ]
             }
         ];
