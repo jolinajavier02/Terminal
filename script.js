@@ -1032,7 +1032,7 @@ class TerminalPortfolio {
         }, 500);
     }
 
-    showContact() {
+    async showContact() {
         const contactText = `
 <div class="contact-section">
     <div class="help-title">Get In Touch</div>
@@ -1055,7 +1055,7 @@ class TerminalPortfolio {
     <br>
     <p><span class="highlight">Response time:</span> I typically respond within 24 hours.</p>
 </div>`;
-        this.addOutput(contactText);
+        await this.typeText(contactText, 'contact-section', 8);
     }
 
     clearTerminal() {
