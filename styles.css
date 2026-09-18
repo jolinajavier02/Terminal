@@ -275,6 +275,20 @@ body {
     transition: transform 0.3s ease, filter 0.3s ease, text-shadow 0.3s ease;
 }
 
+.skills-table .skill-icon-group {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 78px;
+    height: 48px;
+}
+
+.skills-table .mini-skill-icon {
+    width: 34px;
+    height: 34px;
+}
+
 .skills-table img.skill-icon {
     border-radius: 8px;
 }
@@ -290,10 +304,20 @@ body {
     text-shadow: 0 0 8px rgba(0, 255, 0, 0.25);
 }
 
+.skills-table .text-skill-icon {
+    font-size: 34px;
+    line-height: 1;
+    filter: none;
+}
+
 /* GitHub icon white filter for visibility */
 .skills-table img.skill-icon[src*="github"] {
     filter: invert(1) brightness(1.35);
     background-color: transparent;
+}
+
+.skills-table img.skill-icon[src*="amazonaws"] {
+    filter: brightness(1.15) drop-shadow(0 0 6px rgba(255, 153, 0, 0.35));
 }
 
 .skills-table img.skill-icon[src*="github"]:hover {
@@ -305,6 +329,14 @@ body {
     margin-top: 8px;
     font-weight: 500;
     text-shadow: 0 0 3px #00ff00;
+}
+
+.skills-table small {
+    display: block;
+    color: #b8c7b8;
+    font-size: 0.85em;
+    line-height: 1.1;
+    text-shadow: none;
 }
 
 /* Education section styling */

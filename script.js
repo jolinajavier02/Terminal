@@ -607,63 +607,94 @@ class TerminalPortfolio {
     }
 
     async showSkills() {
-        const technicalSkills = [
+        const designSkills = [
+            { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
+            { name: 'User Research', iconClass: 'fas fa-magnifying-glass', iconColor: '#ff5c8a' },
+            { name: 'User Flows', iconClass: 'fas fa-diagram-project', iconColor: '#74c0fc' },
+            { name: 'Wireframing', iconClass: 'fas fa-pen-ruler', iconColor: '#ffb000' },
+            { name: 'Prototyping', iconClass: 'fas fa-bezier-curve', iconColor: '#9c6bff' },
+            { name: 'Interaction & State Design', iconClass: 'fas fa-toggle-on', iconColor: '#00d084' },
+            { name: 'Responsive Layouts', iconClass: 'fas fa-mobile-screen-button', iconColor: '#00bcd4' }
+        ];
+
+        const frontendSkills = [
             { name: 'HTML', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
             { name: 'CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
             { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+            { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
             { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-            { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
+            { name: 'REST API', iconClass: 'fas fa-network-wired', iconColor: '#74c0fc' },
+            { name: 'SQL', iconClass: 'fas fa-database', iconColor: '#f29111' },
+            { name: 'Supabase', icon: 'https://cdn.simpleicons.org/supabase/3ECF8E' },
             { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
-            { name: 'Hosting', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/digitalocean/digitalocean-original.svg' },
             { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' }
         ];
 
-        const designSkills = [
-            { name: 'Responsive Design', iconClass: 'fas fa-mobile-screen-button', iconColor: '#00bcd4' },
-            { name: 'Visual Layout', iconClass: 'fas fa-layer-group', iconColor: '#ffb000' },
-            { name: 'Project Execution', iconClass: 'fas fa-list-check', iconColor: '#8bc34a' },
-            { name: 'Collaboration', iconClass: 'fas fa-people-group', iconColor: '#ff5c8a' },
-            { name: 'Adaptability', iconClass: 'fas fa-arrows-rotate', iconColor: '#9c6bff' }
+        const deploymentSkills = [
+            { name: 'AWS', icon: 'https://cdn.simpleicons.org/amazonaws/FF9900' },
+            { name: 'Lightsail', iconClass: 'fas fa-gauge-high', iconColor: '#ff9900' },
+            { name: 'S3 Bucket', iconClass: 'fas fa-bucket', iconColor: '#7aa116' },
+            { name: 'IAM', iconClass: 'fas fa-id-card', iconColor: '#dd344c' },
+            { name: 'CloudFormation', iconClass: 'fas fa-cloud-arrow-up', iconColor: '#e7157b' },
+            { name: 'Certificate', iconClass: 'fas fa-certificate', iconColor: '#dd344c' },
+            { name: 'Domain & DNS', iconClass: 'fas fa-shield-halved', iconColor: '#8c5cff' },
+            { name: 'HTTPS/SSL', iconClass: 'fas fa-certificate', iconColor: '#dd344c' }
         ];
+
+        const languageSkills = [
+            { name: 'English<br><small>Business</small>', iconText: '🇬🇧' },
+            { name: 'Japanese<br><small>Basic</small>', iconText: '🇯🇵' },
+            { name: 'Filipino<br><small>Native</small>', iconText: '🇵🇭' }
+        ];
+
+        const renderSkillIcon = (skill) => {
+            if (skill.icons) {
+                return `<span class="skill-icon-group">${skill.icons.map((icon) => `<img class="skill-icon mini-skill-icon" src="${icon}" width="34" height="34" alt="${skill.name} icon" />`).join('')}</span>`;
+            }
+
+            if (skill.icon) {
+                return `<img class="skill-icon" src="${skill.icon}" width="48" height="48" alt="${skill.name} icon" />`;
+            }
+
+            if (skill.iconText) {
+                return `<span class="skill-icon text-skill-icon">${skill.iconText}</span>`;
+            }
+
+            return `<i class="${skill.iconClass} skill-icon font-skill-icon" style="color: ${skill.iconColor};"></i>`;
+        };
+
+        const renderSkillsTable = (skills, columns = 4) => {
+            let table = '<table style="width: 100%; margin: 10px 0;"><tr>';
+            skills.forEach((skill, index) => {
+                if (index % columns === 0 && index > 0) {
+                    table += '</tr><tr>';
+                }
+                table += `<td align="center" style="width: 150px; padding: 10px;">
+                ${renderSkillIcon(skill)}
+                <br><span style="color: #00ff00; font-size: 0.9em;">${skill.name}</span>
+            </td>`;
+            });
+            table += '</tr></table>';
+            return table;
+        };
 
         this.addOutput('Skills Portfolio:', 'help-title');
         this.addOutput('', '');
 
-        // Technical Skills Section
-        await this.typeText('Technical Skills & Tools:', 'section-title', 20);
+        await this.typeText('Design:', 'section-title', 20);
+        await this.typeText(renderSkillsTable(designSkills, 7), 'skills-table', 5);
 
-        let techTable = '<table style="width: 100%; margin: 10px 0;"><tr>';
-        technicalSkills.forEach((skill, index) => {
-            if (index % 4 === 0 && index > 0) {
-                techTable += '</tr><tr>';
-            }
-            techTable += `<td align="center" style="width: 120px; padding: 10px;">
-                <img class="skill-icon" src="${skill.icon}" width="48" height="48" alt="${skill.name} icon" />
-                <br><span style="color: #00ff00; font-size: 0.9em;">${skill.name}</span>
-            </td>`;
-        });
-        techTable += '</tr></table>';
-        
-        // Animate the table generation
-        await this.typeText(techTable, 'skills-table', 5);
-
-        // Design & Soft Skills Section
         this.addOutput('', '');
-        await this.typeText('Design & Soft Skills:', 'section-title', 20);
+        await this.typeText('Frontend:', 'section-title', 20);
+        await this.typeText(renderSkillsTable(frontendSkills, 5), 'skills-table', 5);
 
-        let designTable = '<table style="width: 100%; margin: 10px 0;"><tr>';
-        designSkills.forEach((skill, index) => {
-            if (index % 3 === 0 && index > 0) {
-                designTable += '</tr><tr>';
-            }
-            designTable += `<td align="center" style="width: 150px; padding: 10px;">
-                <i class="${skill.iconClass} skill-icon font-skill-icon" style="color: ${skill.iconColor};"></i>
-                <br><span style="color: #00ff00; font-size: 0.9em;">${skill.name}</span>
-            </td>`;
-        });
-        designTable += '</tr></table>';
-        
-        await this.typeText(designTable, 'skills-table', 5);
+        this.addOutput('', '');
+        await this.typeText('Deployment:', 'section-title', 20);
+        await this.typeText(renderSkillsTable(deploymentSkills, 4), 'skills-table', 5);
+
+        this.addOutput('', '');
+        await this.typeText('Language:', 'section-title', 20);
+        await this.typeText(renderSkillsTable(languageSkills, 3), 'skills-table language-skills-table', 5);
 
         this.addOutput('', '');
         await this.typeText('💡 Always learning and expanding my skillset!', 'info', 30);
