@@ -619,11 +619,11 @@ class TerminalPortfolio {
         ];
 
         const designSkills = [
-            { name: 'Responsive Design', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-            { name: 'Visual Layout', icon: 'https://img.icons8.com/fluency/48/design.png' },
-            { name: 'Project Execution', icon: 'https://img.icons8.com/fluency/48/project-management.png' },
-            { name: 'Collaboration', icon: 'https://img.icons8.com/fluency/48/collaboration.png' },
-            { name: 'Adaptability', icon: 'https://img.icons8.com/color/48/change.png' }
+            { name: 'Responsive Design', iconClass: 'fas fa-mobile-screen-button', iconColor: '#00bcd4' },
+            { name: 'Visual Layout', iconClass: 'fas fa-layer-group', iconColor: '#ffb000' },
+            { name: 'Project Execution', iconClass: 'fas fa-list-check', iconColor: '#8bc34a' },
+            { name: 'Collaboration', iconClass: 'fas fa-people-group', iconColor: '#ff5c8a' },
+            { name: 'Adaptability', iconClass: 'fas fa-arrows-rotate', iconColor: '#9c6bff' }
         ];
 
         this.addOutput('Skills Portfolio:', 'help-title');
@@ -638,7 +638,7 @@ class TerminalPortfolio {
                 techTable += '</tr><tr>';
             }
             techTable += `<td align="center" style="width: 120px; padding: 10px;">
-                <img src="${skill.icon}" width="48" height="48" style="filter: brightness(0.9);" />
+                <img class="skill-icon" src="${skill.icon}" width="48" height="48" alt="${skill.name} icon" />
                 <br><span style="color: #00ff00; font-size: 0.9em;">${skill.name}</span>
             </td>`;
         });
@@ -657,7 +657,7 @@ class TerminalPortfolio {
                 designTable += '</tr><tr>';
             }
             designTable += `<td align="center" style="width: 150px; padding: 10px;">
-                <img src="${skill.icon}" width="48" height="48" style="filter: brightness(0.9);" />
+                <i class="${skill.iconClass} skill-icon font-skill-icon" style="color: ${skill.iconColor};"></i>
                 <br><span style="color: #00ff00; font-size: 0.9em;">${skill.name}</span>
             </td>`;
         });
