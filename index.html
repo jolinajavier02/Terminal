@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jolina Javier - Terminal Portfolio</title>
     <link rel="icon" href="favicon.jpeg" type="image/jpeg">
-    <link rel="stylesheet" href="styles.css?v=1.5">
+    <link rel="stylesheet" href="styles.css?v=1.7">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
@@ -31,8 +31,8 @@
                 <p id="typewriter2" class="typewriter"></p>
             </div>
             <div class="landing-instruction">
-                <p>Click 'Enter' to see my work, and to get in touch!</p>
-                <div class="enter-hint">Press <span class="key-highlight">ENTER</span></div>
+                <p>Explore my work, and get in touch!</p>
+                <button type="button" class="enter-hint" id="enterPortfolio">Enter portfolio <span aria-hidden="true">↵</span></button>
             </div>
         </div>
     </div>
@@ -59,15 +59,18 @@
                 </div>
             </div>
 
-            <div class="input-line">
-                <span class="prompt">jolina@portfolio:~$ </span>
-                <span id="commandText"></span><span class="cursor-blink">|</span>
-                <input type="text" id="commandInput" class="command-input" autocomplete="off" spellcheck="false">
-            </div>
+            <form class="command-form" id="commandForm">
+                <div class="input-line">
+                    <span class="prompt">jolina@portfolio:~$ </span>
+                    <span id="commandText"></span><span class="cursor-blink">|</span>
+                    <input type="text" id="commandInput" name="command" class="command-input" aria-label="Terminal command" autocomplete="off" autocapitalize="off" autocorrect="off" enterkeyhint="go" spellcheck="false">
+                </div>
+                <button type="submit" class="command-submit">Run <span aria-hidden="true">↵</span></button>
+            </form>
         </div>
     </div>
 
-    <script src="script.js?v=11"></script>
+    <script src="script.js?v=14"></script>
 </body>
 
 </html>

@@ -212,9 +212,12 @@ class TerminalPortfolio {
         this.commandText = document.getElementById('commandText');
         this.commandInput.addEventListener('keydown', this.handleKeyDown.bind(this));
         this.commandInput.addEventListener('input', this.updateCommandText.bind(this));
+        document.getElementById('commandForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.submitCommand();
+        });
         this.setupWindowControls();
         this.setupLandingPage();
-        this.commandInput.focus();
 
         // Initialize ASCII art in welcome section after a short delay
         setTimeout(() => {
@@ -226,9 +229,9 @@ class TerminalPortfolio {
             this.typeText('Type "help" to see available commands.', 'info');
         }, 1000);
 
-        // Keep input focused
-        document.addEventListener('click', () => {
-            this.commandInput.focus();
+        // Only explicit terminal input taps should open a phone keyboard.
+        document.querySelector('.input-line').addEventListener('click', () => {
+            this.commandInput.focus({ preventScroll: true });
         });
     }
 
@@ -307,9 +310,9 @@ class TerminalPortfolio {
         };
         document.addEventListener('keydown', this.landingKeyHandler);
 
-        // Also handle click on landing page
-        if (this.landingOverlay) {
-            this.landingOverlay.addEventListener('click', () => {
+        const enterButton = document.getElementById('enterPortfolio');
+        if (enterButton) {
+            enterButton.addEventListener('click', () => {
                 this.hideLandingPage();
             });
         }
@@ -326,11 +329,7 @@ class TerminalPortfolio {
         const typewriter2 = document.getElementById('typewriter2');
         const instructionDiv = document.querySelector('.landing-instruction');
 
-        // Hide instruction initially
-        if (instructionDiv) {
-            instructionDiv.style.opacity = '0';
-            instructionDiv.style.transition = 'opacity 0.5s ease-in';
-        }
+        // Keep the entry button available while the introduction types.
 
         if (typewriter1 && typewriter2) {
             // Start first line immediately (no continuous animation)
@@ -354,13 +353,12 @@ class TerminalPortfolio {
         let i = 0;
         element.innerHTML = '';
         element.classList.add('typing');
-        element.style.width = '0';
+        element.style.width = 'auto';
         element.style.display = 'inline-block';
 
         const timer = setInterval(() => {
             if (i < text.length) {
                 element.innerHTML += text.charAt(i);
-                element.style.width = (i + 1) * 0.6 + 'em';
                 i++;
             } else {
                 clearInterval(timer);
@@ -380,16 +378,28 @@ class TerminalPortfolio {
             this.landingOverlay.classList.add('hidden');
             // Focus on terminal input after landing page disappears
             setTimeout(() => {
-                this.commandInput.focus();
+                if (window.matchMedia('(pointer: fine)').matches) {
+                    this.commandInput.focus({ preventScroll: true });
+                }
             }, 500);
         }
     }
 
+    submitCommand() {
+        if (!this.commandInput.value.trim()) return;
+        this.stopAsciiAnimation();
+        this.processCommand();
+        if (window.matchMedia('(pointer: coarse)').matches) {
+            this.commandInput.blur();
+        }
+    }
+
     handleKeyDown(e) {
+        if (e.isComposing || e.keyCode === 229) return;
         switch (e.key) {
             case 'Enter':
-                this.stopAsciiAnimation();
-                this.processCommand();
+                e.preventDefault();
+                this.submitCommand();
                 break;
             case 'ArrowUp':
                 this.navigateHistory(-1);
@@ -418,7 +428,8 @@ class TerminalPortfolio {
         this.addOutput(`jolina@portfolio:${this.currentPath}$ ${input}`, 'command-line');
 
         // Parse and execute command
-        const [command, ...args] = input.split(' ');
+        const [commandName, ...args] = input.split(/\s+/);
+        const command = commandName.toLowerCase();
 
         if (this.commands[command]) {
             // Stop ASCII animation when help is typed
@@ -458,7 +469,7 @@ class TerminalPortfolio {
     }
 
     autoComplete() {
-        const input = this.commandInput.value;
+        const input = this.commandInput.value.toLowerCase();
         const matches = Object.keys(this.commands).filter(cmd => cmd.startsWith(input));
 
         if (matches.length === 1) {
@@ -604,6 +615,26 @@ class TerminalPortfolio {
                     </div>
                 </div>`;
         await this.typeText(aboutContent, 'about-content', 5);
+        this.addOutput(`
+            <section class="creator-card" aria-label="Content creator">
+                <div class="creator-heading">
+                    <img class="creator-profile" src="Profile.png" alt="Ms. Waraynon ng Japan creator profile" width="1122" height="1402" loading="lazy">
+                    <div>
+                        <p class="creator-eyebrow">A LITTLE MORE ABOUT ME / CONTENT CREATOR</p>
+                        <h2>Ms. Waraynon ng Japan</h2>
+                    </div>
+                </div>
+                <p>Beyond design and code, I share daily-life vlogs, everyday moments, and stories from life in Japan. Come along and get to know the person behind the projects.</p>
+                <div class="creator-socials">
+                    <a href="https://www.youtube.com/@Ms.WaraynonngJapan" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube" aria-hidden="true"></i><span>YouTube</span><span class="social-arrow" aria-hidden="true">↗</span></a>
+                    <a href="https://www.instagram.com/yenajavier?obrf=cDNpZm9rNzV2dWxq&utm_source=qr" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i><span>Instagram</span><span class="social-arrow" aria-hidden="true">↗</span></a>
+                    <a href="https://www.tiktok.com/@ms.waraynon02" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok" aria-hidden="true"></i><span>TikTok</span><span class="social-arrow" aria-hidden="true">↗</span></a>
+                    <a href="https://www.facebook.com/share/1DdN4pm8w5/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i><span>Facebook</span><span class="social-arrow" aria-hidden="true">↗</span></a>
+                </div>
+                <p class="creator-support"><strong>Get to know me &amp; support my journey.</strong></p>
+                <p>Watch a vlog, say hello, and follow along. Your support means so much!</p>
+            </section>`, 'creator-content');
+
     }
 
     async showSkills() {
@@ -663,38 +694,29 @@ class TerminalPortfolio {
             return `<i class="${skill.iconClass} skill-icon font-skill-icon" style="color: ${skill.iconColor};"></i>`;
         };
 
-        const renderSkillsTable = (skills, columns = 4) => {
-            let table = '<table style="width: 100%; margin: 10px 0;"><tr>';
-            skills.forEach((skill, index) => {
-                if (index % columns === 0 && index > 0) {
-                    table += '</tr><tr>';
-                }
-                table += `<td align="center" style="width: 150px; padding: 10px;">
+        const renderSkillsGrid = (skills) => `<div class="skill-cards">${skills.map(skill => `
+            <div class="skill-card">
                 ${renderSkillIcon(skill)}
-                <br><span style="color: #00ff00; font-size: 0.9em;">${skill.name}</span>
-            </td>`;
-            });
-            table += '</tr></table>';
-            return table;
-        };
+                <span style="color: #00ff00; font-size: 0.9em;">${skill.name}</span>
+            </div>`).join('')}</div>`;
 
         this.addOutput('Skills Portfolio:', 'help-title');
         this.addOutput('', '');
 
         await this.typeText('Design:', 'section-title', 20);
-        await this.typeText(renderSkillsTable(designSkills, 7), 'skills-table', 5);
+        await this.typeText(renderSkillsGrid(designSkills), 'skills-table', 5);
 
         this.addOutput('', '');
         await this.typeText('Frontend:', 'section-title', 20);
-        await this.typeText(renderSkillsTable(frontendSkills, 5), 'skills-table', 5);
+        await this.typeText(renderSkillsGrid(frontendSkills), 'skills-table', 5);
 
         this.addOutput('', '');
         await this.typeText('Deployment:', 'section-title', 20);
-        await this.typeText(renderSkillsTable(deploymentSkills, 4), 'skills-table', 5);
+        await this.typeText(renderSkillsGrid(deploymentSkills), 'skills-table', 5);
 
         this.addOutput('', '');
         await this.typeText('Language:', 'section-title', 20);
-        await this.typeText(renderSkillsTable(languageSkills, 3), 'skills-table language-skills-table', 5);
+        await this.typeText(renderSkillsGrid(languageSkills), 'skills-table language-skills-table', 5);
 
         this.addOutput('', '');
         await this.typeText('💡 Always learning and expanding my skillset!', 'info', 30);
@@ -1000,7 +1022,7 @@ class TerminalPortfolio {
             </div>`;
 
         this.addOutput(certificatesHeader, 'education-section');
-        const certificatesGrid = this.output.querySelector('.certificates-grid:last-child');
+        const certificatesGrid = this.output.lastElementChild.querySelector('.certificates-grid');
 
         for (const certificate of certificates) {
             await new Promise(resolve => setTimeout(resolve, 220));
@@ -1012,11 +1034,11 @@ class TerminalPortfolio {
             card.rel = 'noopener';
             card.innerHTML = `
                 <div class="certificate-preview">
-                    <iframe src="${encodeURI(certificate.file)}#toolbar=0&navpanes=0&scrollbar=0" title="${certificate.title} certificate" loading="lazy"></iframe>
+                    <img src="assets/certificates/${certificate.number}.jpg" alt="${certificate.title} certificate preview" loading="lazy" width="640" height="480">
                 </div>
                 <div class="certificate-meta">
                     <span class="certificate-number">${certificate.number}</span>
-                    <span class="certificate-title">${certificate.title}</span>
+                    <span class="certificate-title">${certificate.title}<span class="certificate-open">Open PDF ↗</span></span>
                 </div>`;
 
             certificatesGrid.appendChild(card);
@@ -1173,14 +1195,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add easter eggs to terminal
     const terminal = window.terminal || {};
     Object.assign(terminal, easterEggs);
-});
-
-// Handle window resize for responsive design
-window.addEventListener('resize', () => {
-    const commandInput = document.getElementById('commandInput');
-    if (commandInput) {
-        commandInput.focus();
-    }
 });
 
 // Prevent context menu on right click for more terminal-like experience
